@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-login-image{
+    background-image: url(/public/images/Wallpaper-BG-generic.svg);
+}
+.expanded {
+    width: 100%;
+    animation: expand 1s ease;
+  }
+
+  @keyframes expand {
+    0% {
+      width: 50%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
