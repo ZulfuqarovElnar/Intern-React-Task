@@ -44,14 +44,18 @@ export default function Login() {
     const handleUsernameChange = (event) => {
         const value = event.target.value;
         setUsername(value);
-        if (value.length >= 2) {
-            setUsernameErrorMessage(null);
-            setUsernameValid(true);
-        } else {
+        if (value.trim() === '') {
+            setUsernameErrorMessage('Required');
+            setUsernameValid(false);
+        } else if (value.length < 2) {
             setUsernameErrorMessage('Your username needs to be at least 2 characters.');
             setUsernameValid(false);
+        } else {
+            setUsernameErrorMessage(null);
+            setUsernameValid(true);
         }
     };
+    
 
     const handlePasswordChange = (event) => {
         const value = event.target.value;
@@ -81,10 +85,10 @@ export default function Login() {
                     <img className='mb-3' src='../images/logo.svg' alt="" />
                 </div>
                 <form className='mb-4 pb-[26px] w-full' onSubmit={handleSubmit}>
-                        <div className={`h-[45px] flex gap-2.5 text-[#b8082a] ${isAuthenticationFailed ? 'visible' : 'invisible'}`}>
-                            <FontAwesomeIcon className='text-[17px]' icon={faExclamationTriangle} />
-                            <p className='text-xs'>You've entered an unknown username or password</p>
-                        </div>
+                    <div className={`h-[45px] flex gap-2.5 text-[#b8082a] ${isAuthenticationFailed ? 'visible' : 'invisible'}`}>
+                        <FontAwesomeIcon className='text-[17px]' icon={faExclamationTriangle} />
+                        <p className='text-xs'>You've entered an unknown username or password</p>
+                    </div>
                     <div className='mt-5 mb-9 pb-[18px] py-1.5'>
                         <input
                             className={`w-full outline-none placeholder-text-[#bdbdbd]`}
@@ -127,14 +131,24 @@ export default function Login() {
                         <p className='text-xs text-[#b8082a] pt-1'>{passwordErrorMessage}</p>
                     </div>
                     <button
-                        type='submit'
-                        className={`w-full mt-4 text-sm rounded py-2 text-white ${
-                            isUsernameValid && isPasswordValid ? 'bg-[#00754a]' : 'bg-[#0000001F]'
-                        }`}
-                        disabled={!isUsernameValid || !isPasswordValid}
-                    >
-                        SIGN IN
-                    </button>
+    type="button"
+    className={`w-full mt-4 text-sm rounded py-2 text-white ${
+        isUsernameValid && isPasswordValid ? 'bg-[#00754a]' : 'bg-[#0000001F]'
+    }`}
+    onClick={() => {
+        if (isUsernameValid && isPasswordValid) {
+            if (username === 'react' && password === '123456') {
+                window.location.href = '/home';
+            } else {
+                setAuthenticationFailed(true);
+            }
+        }
+    }}
+>
+    SIGN IN
+</button>
+
+
                 </form>
             </div>
         </section>
