@@ -2,12 +2,12 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faCaretDown, faBell, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
-export default function Navbar() {
+export default function Navbar({ toggleSections }) {
     return (
         <section className=' bg-login-image flex items-center justify-between'>
             <div className='w-full h-16 flex px-4 gap-1.5 items-center justify-between'>
                 <div className='flex gap-1.5'>
-                    <button className='w-10 h-10 flex items-center justify-center focus:border-2 focus:border-[#0055b8] rounded'>
+                    <button onClick={toggleSections} className='w-10 h-10 flex items-center justify-center focus:border-2 focus:border-[#0055b8] rounded transition-all'>
                         <FontAwesomeIcon className='w-[29px] h-6 cursor-pointer ' icon={faBars} />
                     </button>
                     <div className='flex items-center h-10 gap-1.5'>

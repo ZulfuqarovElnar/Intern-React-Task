@@ -8,7 +8,10 @@
 .expanded {
     width: 100%;
     animation: expand 1s ease;
-  }
+}
+.custom-div:hover h1 {
+  color: #0055b8;
+}
 
   @keyframes expand {
     0% {
@@ -17,4 +20,4 @@
     100% {
       width: 100%;
     }
-  }
+}
