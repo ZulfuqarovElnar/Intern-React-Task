@@ -137,7 +137,7 @@ export default function Login() {
                         onClick={() => {
                             if (isUsernameValid && isPasswordValid) {
                                 if (username === 'react' && password === '123456') {
-                                    window.location.href = '/home';
+                                    window.location.href = 'home';
                                 } else {
                                     setAuthenticationFailed(true);
                                 }
