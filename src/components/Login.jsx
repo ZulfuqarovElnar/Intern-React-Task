@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
     const [showPassword, setShowPassword] = useState(false);
@@ -55,7 +56,7 @@ export default function Login() {
             setUsernameValid(true);
         }
     };
-    
+
     const handlePasswordChange = (event) => {
         const value = event.target.value;
         setPassword(value);
@@ -68,10 +69,13 @@ export default function Login() {
         }
     };
 
+    const navigate = useNavigate(); 
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (username === 'react' && password === '123456') {
             setAuthenticationFailed(false);
+            navigate('/home'); 
         } else {
             setAuthenticationFailed(true);
         }
@@ -130,19 +134,10 @@ export default function Login() {
                         <p className='text-xs text-[#b8082a] pt-1'>{passwordErrorMessage}</p>
                     </div>
                     <button
-                        type="button"
+                        type="submit" 
                         className={`w-full mt-4 text-sm rounded py-2 text-white ${
                             isUsernameValid && isPasswordValid ? 'bg-[#00754a]' : 'bg-[#0000001F]'
                         }`}
-                        onClick={() => {
-                            if (isUsernameValid && isPasswordValid) {
-                                if (username === 'react' && password === '123456') {
-                                    window.location.href = 'home';
-                                } else {
-                                    setAuthenticationFailed(true);
-                                }
-                            }
-                        }}
                     >
                         SIGN IN
                     </button>
