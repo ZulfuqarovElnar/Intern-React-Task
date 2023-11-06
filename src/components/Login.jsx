@@ -56,7 +56,6 @@ export default function Login() {
         }
     };
     
-
     const handlePasswordChange = (event) => {
         const value = event.target.value;
         setPassword(value);
@@ -131,24 +130,22 @@ export default function Login() {
                         <p className='text-xs text-[#b8082a] pt-1'>{passwordErrorMessage}</p>
                     </div>
                     <button
-    type="button"
-    className={`w-full mt-4 text-sm rounded py-2 text-white ${
-        isUsernameValid && isPasswordValid ? 'bg-[#00754a]' : 'bg-[#0000001F]'
-    }`}
-    onClick={() => {
-        if (isUsernameValid && isPasswordValid) {
-            if (username === 'react' && password === '123456') {
-                window.location.href = '/home';
-            } else {
-                setAuthenticationFailed(true);
-            }
-        }
-    }}
->
-    SIGN IN
-</button>
-
-
+                        type="button"
+                        className={`w-full mt-4 text-sm rounded py-2 text-white ${
+                            isUsernameValid && isPasswordValid ? 'bg-[#00754a]' : 'bg-[#0000001F]'
+                        }`}
+                        onClick={() => {
+                            if (isUsernameValid && isPasswordValid) {
+                                if (username === 'react' && password === '123456') {
+                                    window.location.href = '/home';
+                                } else {
+                                    setAuthenticationFailed(true);
+                                }
+                            }
+                        }}
+                    >
+                        SIGN IN
+                    </button>
                 </form>
             </div>
         </section>
